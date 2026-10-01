@@ -7,7 +7,7 @@
   <title>Veydran Interstellar Authority</title>
   <meta name="description" content="Veydran Interstellar Authority Terran access node." />
   <style>body.vey-loading{visibility:hidden}</style>
-  <link rel="stylesheet" href="gateway.css?v=20261001-1" />
+  <link rel="stylesheet" href="gateway.css?v=20261001-2" />
 </head>
 <body class="vey-loading">
   <div class="scanline" aria-hidden="true"></div>
@@ -75,6 +75,39 @@
       </article>
     </section>
 
+    <section class="ad-section panel">
+      <div class="panel-head">
+        <div>
+          <div class="kicker">PUBLIC NETWORK SPONSORSHIP FEED</div>
+          <h2>Commercial transmissions</h2>
+        </div>
+        <div class="ad-label">AUTO-TARGETED // SPECIES PROFILE</div>
+      </div>
+
+      <div class="ad-grid">
+        <article class="ad-card hot">
+          <div class="ad-tag">SPONSORED // SOCIAL</div>
+          <h3>HOT GARGAZIAN SINGLES IN YOUR SECTOR</h3>
+          <p>Several compatible organisms have allegedly detected your presence.</p>
+          <button type="button" id="singlesAd">VIEW COMPATIBLE ORGANISMS</button>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-tag">SPONSORED // DOMESTIC</div>
+          <h3>ORBITAL STORAGE RUNNING LOW?</h3>
+          <p>Upgrade to six additional moons of encrypted household capacity.</p>
+          <button type="button" data-ad-message="SERVICE UNAVAILABLE IN TERRAN JURISDICTION // YOUR MOON COUNT IS BELOW MINIMUM REQUIREMENTS.">CHECK ELIGIBILITY</button>
+        </article>
+
+        <article class="ad-card">
+          <div class="ad-tag">SPONSORED // INSURANCE</div>
+          <h3>PROTECT YOUR BROOD POD</h3>
+          <p>Comprehensive accidental plasma, meteor and ceremonial damage cover.</p>
+          <button type="button" data-ad-message="QUOTE DECLINED // TERRAN BIOLOGY IS OUTSIDE CURRENT UNDERWRITING PARAMETERS.">GET QUOTE</button>
+        </article>
+      </div>
+    </section>
+
     <section class="notice panel">
       <div class="kicker">PUBLIC ACCESS NOTICE</div>
       <p>Terran users are reminded that curiosity does not constitute clearance. Repeated attempts to access restricted systems may be interpreted as enthusiasm and reassigned accordingly.</p>
@@ -88,7 +121,22 @@
   </main>
 
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal hidden" id="ageModal" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="modal-card">
+      <div class="modal-code">VE-Y18 // AGE VERIFICATION</div>
+      <h2 id="ageTitle">ACCESS RESTRICTED</h2>
+      <p class="modal-big">You must be over 200 cycles old to view this site.</p>
+      <p>Terran age documentation is not accepted by the Veydran Interstellar Decency Authority.</p>
+      <div class="modal-actions">
+        <button type="button" id="claimAge">I AM OVER 200</button>
+        <button type="button" id="closeAge">RETURN TO CIVIC NETWORK</button>
+      </div>
+      <div class="modal-fine">False declarations may result in parental notification, civic shame, or reassignment.</div>
+    </div>
+  </div>
+
   <script>window.setTimeout(()=>document.body.classList.remove('vey-loading'),1500);</script>
-  <script src="gateway.js?v=20261001-1"></script>
+  <script src="gateway.js?v=20261001-2"></script>
 </body>
 </html>
