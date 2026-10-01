@@ -24,6 +24,7 @@
     N:'И', O:'Θ', P:'Ƥ', Q:'Ҩ', R:'Я', S:'Ϟ', T:'Ŧ', U:'Ս', V:'Ѵ', W:'Ш', X:'Ж', Y:'Ұ', Z:'Ȥ'
   };
 
+  const englishTitle = 'Vmail — Veydran Communications';
   let language = 'vey';
   let loginAttempts = 0;
   let puzzleAttempts = 0;
@@ -70,6 +71,7 @@
     });
     languageToggle.textContent = veydran ? 'ENGLISH' : 'VEYDRAN';
     document.documentElement.lang = veydran ? 'x-vey' : 'en';
+    document.title = veydran ? toVeydran(englishTitle) : englishTitle;
   }
 
   function localise(text) {
@@ -91,7 +93,6 @@
     language = language === 'vey' ? 'en' : 'vey';
     applyLanguage();
 
-    // Re-localise any visible live messages after switching language.
     [loginResult, puzzleResult, toast].forEach((el) => {
       if (el.dataset.englishMessage) {
         el.textContent = localise(el.dataset.englishMessage);
@@ -126,7 +127,6 @@
     const length = cipher.value.length;
     const selected = captchaTiles.filter((tile) => tile.classList.contains('selected')).length;
 
-    // Never inspect the password characters themselves; only the length.
     if (length < 150 || length > 500) {
       setLiveResult(loginResult, 'PLEASE ENTER A PASSWORD BETWEEN 150 AND 500 CHARACTERS.');
       cipher.value = '';
@@ -178,4 +178,5 @@
 
   collectLanguageContent();
   applyLanguage();
+  document.body.classList.remove('vey-loading');
 })();
