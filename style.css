@@ -1,0 +1,128 @@
+:root {
+  --bg: #020a10;
+  --panel: rgba(5, 24, 37, 0.94);
+  --panel2: rgba(7, 34, 50, 0.92);
+  --line: rgba(48, 202, 255, 0.22);
+  --cyan: #39d6ff;
+  --cyan2: #0ca6d8;
+  --blue: #5d5bff;
+  --text: #d7edf6;
+  --muted: #7397a9;
+  --danger: #ff647c;
+  --ok: #65ffc0;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--bg); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 72% 12%, rgba(45, 69, 170, .24), transparent 28rem),
+    linear-gradient(rgba(2,10,16,.93), rgba(2,10,16,.98)),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(36, 172, 214, .035) 80px),
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(36, 172, 214, .03) 80px);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(55,214,255,.015) 1px, transparent 1px);
+  background-size: 100% 4px;
+  mix-blend-mode: screen;
+}
+
+.scanline {
+  position: fixed;
+  left: 0; right: 0; top: -14%;
+  height: 14%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(45, 211, 255, .045), transparent);
+  animation: scan 8s linear infinite;
+}
+@keyframes scan { to { transform: translateY(840%); } }
+
+.shell { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 36px; }
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  border-bottom: 1px solid var(--line); padding: 0 0 20px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.vmark { width: 48px; height: 42px; position: relative; }
+.vmark span { position: absolute; top: 2px; width: 13px; height: 40px; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, #766dff, #3e53ff); }
+.vmark span:first-child { left: 8px; transform: rotate(-36deg); }
+.vmark span:last-child { right: 8px; transform: rotate(36deg); }
+.brand-name { font-size: 28px; line-height: 1; font-weight: 720; letter-spacing: .2px; }
+.brand-sub, .network, .eyebrow, .kicker, footer { font-size: 10px; letter-spacing: 2.1px; color: var(--muted); }
+.brand-sub { margin-top: 6px; }
+.network { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 16px var(--ok); }
+
+.hero { padding: 72px 0 28px; }
+.eyebrow { color: var(--cyan); }
+h1 { margin: 10px 0 10px; font-size: clamp(36px, 7vw, 72px); letter-spacing: -2.5px; line-height: .98; font-weight: 780; }
+.lede { max-width: 680px; color: #8eb0bf; font-size: 17px; line-height: 1.6; }
+
+.panel {
+  position: relative;
+  margin-top: 20px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, var(--panel), var(--panel2));
+  box-shadow: 0 18px 70px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+.panel::before, .panel::after {
+  content:""; position:absolute; background:var(--cyan); opacity:.65;
+}
+.panel::before { width: 64px; height: 1px; top: -1px; left: 26px; }
+.panel::after { width: 1px; height: 42px; right: -1px; bottom: 26px; }
+.panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 24px; }
+h2 { margin: 6px 0 0; font-size: 25px; letter-spacing: -.4px; }
+.glyphs { color: var(--cyan); letter-spacing: 8px; font-size: 18px; }
+.risk { color: var(--danger); font-size: 10px; letter-spacing: 1.5px; }
+
+form { display: grid; gap: 16px; }
+label { display: grid; gap: 8px; color: #9fc1cf; font-size: 12px; letter-spacing: .8px; text-transform: uppercase; }
+input {
+  width: 100%; border: 1px solid #174b61; background: #03111b; color: #e6faff;
+  padding: 15px 16px; border-radius: 5px; outline: none; font: inherit; text-transform: none;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
+}
+input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(57,214,255,.08); }
+input::placeholder { color: #385c6b; }
+.primary {
+  border: 1px solid rgba(57,214,255,.42); color: #dff9ff; background: linear-gradient(180deg, #0a506b, #083b50);
+  padding: 14px 18px; border-radius: 5px; font-weight: 760; letter-spacing: 1.1px; cursor: pointer;
+  transition: transform .12s ease, border-color .12s ease, filter .12s ease;
+}
+.primary:hover { filter: brightness(1.12); border-color: var(--cyan); }
+.primary:active { transform: translateY(1px); }
+.actions { display:flex; gap:10px; align-items:center; margin-top:18px; flex-wrap:wrap; }
+.link-button { appearance:none; border:0; padding:0; background:none; color:var(--cyan); cursor:pointer; font:inherit; font-size:12px; }
+.link-button:hover { text-decoration: underline; }
+.divider { color:#315161; }
+.result { min-height: 0; margin-top: 16px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; line-height: 1.55; color: var(--danger); }
+.result.active { padding: 12px 14px; border-left: 2px solid var(--danger); background: rgba(255,100,124,.06); }
+
+.puzzle-copy { color:#9cb8c5; line-height:1.55; font-size:14px; }
+.puzzle-copy ol { padding-left: 20px; }
+.cipher-strip { margin: 20px 0; padding: 16px; border:1px solid var(--line); background:#020c12; color:var(--cyan); text-align:center; font-size:22px; letter-spacing:12px; overflow:hidden; }
+.fineprint { margin-bottom:0; color:#486a79; font-size:10px; }
+.hidden { display:none !important; }
+
+footer { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:26px; padding-top:18px; border-top:1px solid rgba(48,202,255,.1); }
+.toast { position:fixed; right:18px; bottom:18px; max-width:360px; padding:14px 16px; border:1px solid var(--line); background:#051924; color:#bbdce8; box-shadow:0 12px 50px rgba(0,0,0,.45); font-size:12px; }
+
+@media (max-width: 640px) {
+  .network { display:none; }
+  .hero { padding-top:48px; }
+  .panel { padding:20px; }
+  .cipher-strip { letter-spacing:6px; font-size:18px; }
+  footer { flex-direction:column; gap:8px; }
+}
