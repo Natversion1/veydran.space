@@ -7,7 +7,21 @@
   <title>Vmail — Veydran Communications</title>
   <meta name="description" content="Veydran Communications secure access terminal." />
   <style>body.vey-loading{visibility:hidden}</style>
-  <link rel="stylesheet" href="style.css?v=20261001-2" />
+  <script>
+    // Fail-safe: if the main script ever fails to initialise, do not leave visitors with a blank page.
+    window.setTimeout(function () {
+      function revealFallback() {
+        if (document.body) document.body.classList.remove('vey-loading');
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', revealFallback, { once: true });
+      } else {
+        revealFallback();
+      }
+    }, 1500);
+  </script>
+  <noscript><style>body.vey-loading{visibility:visible}</style></noscript>
+  <link rel="stylesheet" href="style.css?v=20261001-3" />
 </head>
 <body class="vey-loading">
   <div class="scanline" aria-hidden="true"></div>
@@ -49,6 +63,7 @@
         <label>
           Authorisation Cipher
           <input type="password" name="cipher" autocomplete="off" spellcheck="false" minlength="150" maxlength="500" placeholder="Please enter a password between 150 and 500 characters" />
+          <span class="captcha-note">Please enter a password between 150 and 500 characters.</span>
         </label>
 
         <div class="captcha" id="captchaBlock">
@@ -61,15 +76,15 @@
           </div>
           <p class="captcha-copy">Select every tile containing no Veydran glyphs.</p>
           <div class="captcha-grid" id="captchaGrid" role="group" aria-label="Veydran verification tiles">
-            <button type="button" class="captcha-tile" data-captcha-tile>ϟ</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⌁</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⟊</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⊘</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⟁</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⟟</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⊚</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⌬</button>
-            <button type="button" class="captcha-tile" data-captcha-tile>⌖</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">ϟ</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⌁</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⟊</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⊘</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⟁</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⟟</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⊚</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⌬</button>
+            <button type="button" class="captcha-tile" data-captcha-tile aria-pressed="false">⌖</button>
           </div>
           <div class="captcha-note">Failure may indicate Terran biology, insufficient education, or treason.</div>
         </div>
@@ -124,7 +139,12 @@
     </footer>
   </main>
 
+  <noscript>
+    <div style="position:fixed;left:12px;right:12px;bottom:12px;padding:12px;background:#260d16;color:#ffd6de;border:1px solid #ff647c;font:12px monospace;z-index:9999">
+      SCRIPTING SUBSYSTEM OFFLINE // VEYDRAN AUTHENTICATION CANNOT PROCEED.
+    </div>
+  </noscript>
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261001-2"></script>
+  <script src="app.js?v=20261001-3"></script>
 </body>
 </html>
