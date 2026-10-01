@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#03121c" />
+  <title>Vmail — Veydran Communications</title>
+  <meta name="description" content="Veydran Communications secure access terminal." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand" aria-label="Vmail">
+        <div class="vmark" aria-hidden="true"><span></span><span></span></div>
+        <div>
+          <div class="brand-name">Vmail</div>
+          <div class="brand-sub">VEYDRAN COMMUNICATIONS</div>
+        </div>
+      </div>
+      <div class="network"><span class="pulse"></span> INTERSTELLAR RELAY: ONLINE</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">SECURE CIVIC ACCESS NODE // TERRAN MIRROR</div>
+      <h1>Vmail access terminal</h1>
+      <p class="lede">Authorised Veydran personnel only. Earth-origin credentials are not recognised by this system.</p>
+    </section>
+
+    <section class="panel login-panel" id="loginPanel">
+      <div class="panel-head">
+        <div>
+          <div class="kicker">IDENTITY GATEWAY</div>
+          <h2>Authenticate</h2>
+        </div>
+        <div class="glyphs" aria-hidden="true">⌁ ⋮ ⟡</div>
+      </div>
+
+      <form id="loginForm" autocomplete="off" novalidate>
+        <label>
+          Veydran Identity
+          <input type="text" name="identity" autocomplete="off" spellcheck="false" placeholder="designation@veydran.space" />
+        </label>
+        <label>
+          Authorisation Cipher
+          <input type="text" name="cipher" autocomplete="off" spellcheck="false" placeholder="••••••••••••••••" />
+        </label>
+        <button class="primary" type="submit">INITIATE HANDSHAKE</button>
+      </form>
+
+      <div id="loginResult" class="result" role="status" aria-live="polite"></div>
+
+      <div class="actions">
+        <button class="link-button" id="requestAccount" type="button">Request Veydran identity</button>
+        <span class="divider">//</span>
+        <button class="link-button" id="recover" type="button">Recover cipher</button>
+      </div>
+    </section>
+
+    <section class="panel puzzle-panel hidden" id="puzzlePanel" aria-hidden="true">
+      <div class="panel-head">
+        <div>
+          <div class="kicker">CITIZENSHIP VALIDATION // STAGE 1 OF 4</div>
+          <h2>Cryptographic competency assessment</h2>
+        </div>
+        <div class="risk">RISK: NEGLIGIBLE*</div>
+      </div>
+
+      <div class="puzzle-copy">
+        <p>Derive a valid 12-glyph Terran transcription satisfying all Veydran checksums.</p>
+        <ol>
+          <li>Checksum A must equal Checksum B.</li>
+          <li>Checksum B must not equal Checksum A.</li>
+          <li>The sequence must contain exactly twelve glyphs.</li>
+          <li>No glyph may appear in the sequence.</li>
+        </ol>
+        <div class="cipher-strip" aria-label="Veydran cipher specimen">ϟ ⌁ ⟊ ⊘ ⟁ ⋮ ⟟ ⊚ ⌬ ⟠ ⊹ ⌖</div>
+      </div>
+
+      <form id="puzzleForm" autocomplete="off">
+        <label>
+          Candidate sequence
+          <input type="text" maxlength="64" autocomplete="off" spellcheck="false" placeholder="ENTER 12-GLYPH SEQUENCE" />
+        </label>
+        <button class="primary" type="submit">VALIDATE SEQUENCE</button>
+      </form>
+      <div id="puzzleResult" class="result" role="status" aria-live="polite"></div>
+      <p class="fineprint">*Risk assessment applies to Veydran physiology only.</p>
+    </section>
+
+    <footer>
+      <span>VMAIL NODE T-03</span>
+      <span>VEYDRAN COMMUNICATIONS AUTHORITY</span>
+      <span>LOCAL REALITY OFFSET: +1</span>
+    </footer>
+  </main>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
