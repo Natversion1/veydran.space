@@ -19,7 +19,10 @@
           <div class="brand-sub">VEYDRAN COMMUNICATIONS</div>
         </div>
       </div>
-      <div class="network"><span class="pulse"></span> INTERSTELLAR RELAY: ONLINE</div>
+      <div class="top-actions">
+        <div class="network"><span class="pulse"></span> INTERSTELLAR RELAY: ONLINE</div>
+        <button class="language-toggle" id="languageToggle" type="button" data-no-vey="true">ENGLISH</button>
+      </div>
     </header>
 
     <section class="hero">
@@ -44,8 +47,32 @@
         </label>
         <label>
           Authorisation Cipher
-          <input type="text" name="cipher" autocomplete="off" spellcheck="false" placeholder="••••••••••••••••" />
+          <input type="password" name="cipher" autocomplete="off" spellcheck="false" minlength="150" maxlength="500" placeholder="Please enter a password between 150 and 500 characters" />
         </label>
+
+        <div class="captcha" id="captchaBlock">
+          <div class="captcha-head">
+            <div>
+              <div class="kicker">AUTOMATED SPECIES VERIFICATION</div>
+              <strong>Confirm you are not Terran</strong>
+            </div>
+            <div class="captcha-badge">VR-CAPTCHA // 9.4</div>
+          </div>
+          <p class="captcha-copy">Select every tile containing no Veydran glyphs.</p>
+          <div class="captcha-grid" id="captchaGrid" role="group" aria-label="Veydran verification tiles">
+            <button type="button" class="captcha-tile" data-captcha-tile>ϟ</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⌁</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⟊</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⊘</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⟁</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⟟</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⊚</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⌬</button>
+            <button type="button" class="captcha-tile" data-captcha-tile>⌖</button>
+          </div>
+          <div class="captcha-note">Failure may indicate Terran biology, insufficient education, or treason.</div>
+        </div>
+
         <button class="primary" type="submit">INITIATE HANDSHAKE</button>
       </form>
 
