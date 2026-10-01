@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /orbital-command/
+
+# Terran crawler access to classified orbital systems remains prohibited.
