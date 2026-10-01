@@ -8,6 +8,10 @@
 
   const languageToggle = document.getElementById('languageToggle');
   const toast = document.getElementById('toast');
+  const ageModal = document.getElementById('ageModal');
+  const singlesAd = document.getElementById('singlesAd');
+  const closeAge = document.getElementById('closeAge');
+  const claimAge = document.getElementById('claimAge');
   let language = 'vey';
   const textNodes = [];
 
@@ -61,6 +65,37 @@
       showToast(button.closest('.service').dataset.denied);
     });
   });
+
+  document.querySelectorAll('[data-ad-message]').forEach((button) => {
+    button.addEventListener('click', () => showToast(button.dataset.adMessage));
+  });
+
+  if (singlesAd) {
+    singlesAd.addEventListener('click', () => {
+      ageModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  function closeAgeGate() {
+    ageModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  if (closeAge) closeAge.addEventListener('click', closeAgeGate);
+
+  if (claimAge) {
+    claimAge.addEventListener('click', () => {
+      closeAgeGate();
+      showToast('AGE CLAIM REJECTED // ESTIMATED TERRAN LIFESPAN IS BELOW VEYDRAN ADULT THRESHOLD. NICE TRY.');
+    });
+  }
+
+  if (ageModal) {
+    ageModal.addEventListener('click', (event) => {
+      if (event.target === ageModal) closeAgeGate();
+    });
+  }
 
   console.log('%cVEYDRAN PUBLIC NODE', 'color:#39d6ff;font-weight:bold;font-size:18px');
   console.log('Terran inspection detected. Curiosity has been added to your species profile.');
