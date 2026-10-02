@@ -25,7 +25,16 @@
   };
 
   const englishTitle = 'Vmail — Veydran Communications';
-  let language = 'vey';
+  function getSharedLanguage() {
+    const match = document.cookie.match(/(?:^|;\s*)vey_lang=(en|vey)(?:;|$)/);
+    return match ? match[1] : 'vey';
+  }
+
+  function setSharedLanguage(value) {
+    document.cookie = 'vey_lang=' + value + '; Domain=veydran.space; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+  }
+
+  let language = getSharedLanguage();
   let loginAttempts = 0;
   let puzzleAttempts = 0;
 
@@ -91,6 +100,7 @@
 
   languageToggle.addEventListener('click', () => {
     language = language === 'vey' ? 'en' : 'vey';
+    setSharedLanguage(language);
     applyLanguage();
 
     [loginResult, puzzleResult, toast].forEach((el) => {

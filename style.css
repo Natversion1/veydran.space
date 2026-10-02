@@ -76,6 +76,23 @@ body::before {
   box-shadow: 0 0 18px rgba(57,214,255,.07);
 }
 .language-toggle:hover { border-color: var(--cyan); background:#073448; }
+.public-node-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:8px 11px;
+  border:1px solid rgba(57,214,255,.22);
+  background:rgba(4,19,29,.72);
+  color:#8fc6d7;
+  text-decoration:none;
+  border-radius:4px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.15px;
+  white-space:nowrap;
+}
+.public-node-link:hover { border-color:rgba(57,214,255,.5); color:#dff9ff; background:#073044; }
 
 .hero { padding: 72px 0 28px; }
 .eyebrow { color: var(--cyan); }
@@ -163,7 +180,8 @@ footer { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; 
 
 @media (max-width: 640px) {
   .network { display:none; }
-  .top-actions { margin-left:auto; }
+  .top-actions { margin-left:auto; gap:8px; }
+  .public-node-link { font-size:8px; padding:8px 9px; }
   .hero { padding-top:48px; }
   .panel { padding:20px; }
   .cipher-strip { letter-spacing:6px; font-size:18px; }
